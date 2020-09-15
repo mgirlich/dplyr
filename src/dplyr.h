@@ -17,6 +17,7 @@ namespace dplyr {
 struct envs {
   static SEXP ns_dplyr;
   static SEXP ns_vctrs;
+  static SEXP ns_funs;
 };
 
 struct symbols {
@@ -48,6 +49,7 @@ struct functions {
   static SEXP vec_chop;
   static SEXP dot_subset2;
   static SEXP list;
+  static SEXP eval_hybrid;
 };
 
 } // namespace dplyr
@@ -88,7 +90,7 @@ SEXP dplyr_group_keys(SEXP group_data);
 SEXP dplyr_mask_set(SEXP env_private, SEXP s_name, SEXP chunks);
 SEXP dplyr_mask_add(SEXP env_private, SEXP s_name, SEXP chunks);
 
-SEXP dplyr_lazy_vec_chop(SEXP data);
+SEXP dplyr_lazy_vec_chop(SEXP data, SEXP caller_env);
 SEXP dplyr_data_masks_setup(SEXP chops, SEXP data);
 SEXP env_resolved(SEXP env, SEXP names);
 SEXP dplyr_eval_tidy_all(SEXP quosures, SEXP chops, SEXP masks, SEXP caller_env, SEXP auto_names, SEXP context);
